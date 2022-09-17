@@ -8,6 +8,7 @@ packages = [{include = "conversation_editor"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+dearpygui = "^1.7.0"
 
 
 [build-system]

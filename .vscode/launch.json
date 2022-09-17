@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Run App from CLI",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/conversation_editor",
+            "program": "cli.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

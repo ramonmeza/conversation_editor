@@ -1,0 +1,30 @@
+[[package]]
+name = "dearpygui"
+version = "1.7.0"
+description = "DearPyGui: A simple Python GUI Toolkit"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "1b1f5151b0bff85ec1caeba2d3fb86d7b0a7410ea4cf1043bd3434eb7fd3bc2a"
+
+[metadata.files]
+dearpygui = [
+    {file = "dearpygui-1.7.0-cp310-cp310-macosx_10_6_x86_64.whl", hash = "sha256:24b103b727e63d83779e755241599b3b3f5e9106e6d9fc43ad379ea1e05ac614"},
+    {file = "dearpygui-1.7.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:200efd08c59e5781e836efb52af5d489b36e7f862ebc528460d8f42e00a4ea9b"},
+    {file = "dearpygui-1.7.0-cp310-cp310-manylinux1_x86_64.whl", hash = "sha256:621293153b99d8ee1584cfb28ceb3685e3cd607f8901b3225535f918d7d96ce4"},
+    {file = "dearpygui-1.7.0-cp310-cp310-win_amd64.whl", hash = "sha256:95b845e15c579fec3b422502c86fea4dd37b3fe53cde8e0f58d62381f01d0169"},
+    {file = "dearpygui-1.7.0-cp37-cp37m-macosx_10_6_x86_64.whl", hash = "sha256:1b493fdd2f9abfdd08af3ab5623961020d13208a5ec27874e6c1a1d3091950b3"},
+    {file = "dearpygui-1.7.0-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:172d6596e62084221d859c473fb62467071e9b7823e8dd9a00343abd852bdbb2"},
+    {file = "dearpygui-1.7.0-cp37-cp37m-win_amd64.whl", hash = "sha256:10558b8bdcfa044cd65a89001db992f120e6dc1cc508497379e2d873195b6121"},
+    {file = "dearpygui-1.7.0-cp38-cp38-macosx_10_6_x86_64.whl", hash = "sha256:98e5fc7100ab52a851c3e7386dcc6a88a8b9baf536a4ed5231967f0991ede852"},
+    {file = "dearpygui-1.7.0-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:e32919f39f11fb6b1869d426d98994b2cc76ebbcaf224649c03663478e6f81b0"},
+    {file = "dearpygui-1.7.0-cp38-cp38-win_amd64.whl", hash = "sha256:de50832ad40481eec7ca6e23a8a1324e299b5b38b1341f510468d4a0fd4951c7"},
+    {file = "dearpygui-1.7.0-cp39-cp39-macosx_10_6_x86_64.whl", hash = "sha256:8cba8dea7c53f5b41416dbc6dda55d00d0a66e47dde0ae470d59d20d1b6b693f"},
+    {file = "dearpygui-1.7.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:42105b5ecc7afc70e8998012764bd4d571800f0c90d8e9a435b2bae6ab450db4"},
+    {file = "dearpygui-1.7.0-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:69945c1f9e23125dfd354bf895142aef7bdeeecfc1c512f815b35c7c336d020f"},
+    {file = "dearpygui-1.7.0-cp39-cp39-win_amd64.whl", hash = "sha256:dd52c7e1aa780beb316c700adfdfb341f09f7361aea394fb47eb82fae2767cfc"},
+]
