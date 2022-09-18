@@ -1,0 +1,28 @@
+{
+    "name": "Conversation Name",
+    "description": "Description of the conversation",
+    "nodes": [{
+        "speaker": "Doctor",
+        "text": "Hey there, how can I help you?"
+    }, {
+        "speaker": "Player",
+        "text": "I'm not feeling too great. Can you take a look at me?"
+    }, {
+        "operator": "==",
+        "attribute": "Health",
+        "value": 100
+    }, {
+        "speaker": "Doctor",
+        "text": "Doesn't seem like you have any wounds on you. What are your symptoms?"
+    }, {
+        "speaker": "Doctor",
+        "text": "Well here's your problem! You're missing a leg!"
+    }],
+    "connections": [
+        [1],
+        [2],
+        [3, 4],
+        [],
+        []
+    ]
+}
