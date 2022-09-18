@@ -13,11 +13,21 @@ class AttributeComparisonNode:
     operand and `value` is the right-hand operand.
 
     Attributes:
-        operator (str):  Comparison operator to be used.
         attribute (str): Name of the attribute to compare the value against.
+        operator (str):  Comparison operator to be used.
         value (int):     The value to compare the attribute against.
     """
 
-    operator: str = '=='
     attribute: str = 'AttributeName'
+    operator: str = '=='
     value: int = 0
+
+
+ComparisonOperators: list[str] = [
+    "==",
+    "!=",
+    "<",
+    "<=",
+    ">",
+    ">=",
+]
