@@ -1,3 +1,4 @@
+name: Run PyTest
 on:
   push:
     branches: [main]
