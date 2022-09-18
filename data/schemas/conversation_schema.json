@@ -1,1 +1,84 @@
-{}
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/ramonmeza/conversation_editor/main/data/schemas/conversation_schema.json",
+    "title": "Contains all information related to a conversation.",
+    "type": "object",
+    "required": [
+        "name",
+        "description",
+        "nodes",
+        "connections"
+    ],
+    "properties": {
+        "name": {
+            "title": "Name of the conversation.",
+            "type": "string",
+            "examples": [
+                "New Conversation"
+            ]
+        },
+        "description": {
+            "title": "High-level description of the conversation.",
+            "type": "string",
+            "examples": [
+                "Conversation description."
+            ]
+        },
+        "nodes": {
+            "title": "Array of nodes within this conversation.",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    { "$ref": "attribute_comparison_node_schema.json" },
+                    { "$ref": "talk_node_schema.json" }
+                ]
+            }
+        },
+        "connections": {
+            "title": "Defines the connections between nodes.",
+            "type": "array",
+            "items": {
+                "title": "Nodes to connect to",
+                "type": "array",
+                "items": {
+                    "title": "Node index within the nodes property.",
+                    "type": "integer",
+                    "examples": [
+                        0,
+                        1
+                    ]
+                },
+                "examples": [
+                    [
+                        0],
+                    [0,
+                        1],
+                    []
+                ]
+            },
+            "examples": [
+                [
+                    [
+                        0],
+                    [0,
+                        1],
+                    []
+                ]
+            ]
+        }
+    },
+    "examples": [{
+        "name": "New Conversation",
+        "description": "Conversation description.",
+        "nodes": [{},
+        {},
+        {}],
+        "connections": [
+            [
+                0],
+            [0,
+                1],
+            []
+        ]
+    }]
+}

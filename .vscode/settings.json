@@ -1,4 +1,5 @@
 {
+    "files.trimTrailingWhitespace": true,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -18,5 +19,5 @@
     "python.testing.pytestEnabled": true,
     "python.analysis.extraPaths": [
         "tests"
-    ]
+    ],
 }

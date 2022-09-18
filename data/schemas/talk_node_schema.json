@@ -1,33 +1,32 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "$id": "https://raw.githubusercontent.com/ramonmeza/conversation_editor/main/data/schemas/talk_node_schema.json",
-    "type": "object",
-    "default": {},
     "title": "Talk Node Schema",
+    "type": "object",
     "required": [
         "speaker",
         "text"
     ],
     "properties": {
         "speaker": {
-            "type": "string",
-            "default": "",
             "title": "Name of the speaker",
+            "type": "string",
             "examples": [
                 "Player"
             ]
         },
         "text": {
-            "type": "string",
-            "default": "",
             "title": "Dialogue to be spoken.",
+            "type": "string",
             "examples": [
                 "Hey there, you don't look like you're from around here."
             ]
         }
     },
-    "examples": [{
-        "speaker": "Player",
-        "text": "Hey there, you don't look like you're from around here."
-    }]
+    "examples": [
+        {
+            "speaker": "Player",
+            "text": "Hey there, you don't look like you're from around here."
+        }
+    ]
 }

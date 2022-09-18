@@ -23,10 +23,29 @@ POSITIVE_TEST_DATA = [
     SchemaTestData(pathlib.Path('data/schemas/talk_node_schema.json'), {
         'speaker': 'Tester',
         'text': 'This is just a test of the Talk Node schema.'
+    }),
+    SchemaTestData(pathlib.Path('data/schemas/conversation_schema.json'), {
+        'name': 'Tester',
+        'description': 'This is just a test of the Conversation schema.',
+        'nodes': [{
+            'speaker': 'Tester',
+            'text': 'This is just a test of the Talk Node schema.'
+        }, {
+        'operator': '<',
+        'attribute': 'Health',
+        "value": 100
+        }],
+        'connections': [
+            [1],
+            [2],
+            [0, 1]
+        ]
     })
 ]
 
 NEGATIVE_TEST_DATA = [
+    SchemaTestData(pathlib.Path('data/schemas/attribute_comparison_node_schema.json'), {
+    }),
     SchemaTestData(pathlib.Path('data/schemas/attribute_comparison_node_schema.json'), {
         'operator': 0,
         'attribute': 'Health',
