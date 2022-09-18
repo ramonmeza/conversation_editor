@@ -10,11 +10,11 @@
             "justMyCode": true
         },
         {
-            "name": "Run App from CLI",
+            "name": "Run App",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/conversation_editor",
-            "program": "cli.py",
+            "program": "app.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }
