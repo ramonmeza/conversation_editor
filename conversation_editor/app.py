@@ -7,6 +7,7 @@ from core.attribute_comparison_node import ComparisonOperators
 
 # types
 NodeSize: namedtuple = namedtuple('NodeSize', ['x', 'y'])
+Position: namedtuple = NodeSize
 
 # constants
 PRIMARY_WINDOW_TAG: str = 'Primary Window'
@@ -37,51 +38,15 @@ def main() -> None:
                 dpg.add_menu_item(label='Redo', shortcut='Ctrl+Y')
                 dpg.add_separator()
                 with dpg.menu(label='Nodes'):
-                    dpg.add_menu_item(label='Add Node', shortcut='Ctrl+A')
+                    dpg.add_menu_item(label='Add Talk Node', shortcut='Ctrl+T')
+                    dpg.add_menu_item(label='Add Attribute Comparison Node', shortcut='Ctrl+A')
                     dpg.add_menu_item(label='Delete Selected', shortcut='Delete')
                 dpg.add_separator()
                 dpg.add_menu_item(label='Preferences')
 
         with dpg.node_editor(tag=NODE_EDITOR_TAG, minimap=True, minimap_location=dpg.mvNodeMiniMap_Location_TopRight):
-            with dpg.node(label='Talk Node'):
-                # inputs
-                with dpg.node_attribute():
-                    pass
-
-                # talk node attributes
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
-                    dpg.add_input_text(label='Speaker', width=NODE_SIZE.x)
-                    dpg.add_input_text(label='Text', multiline=True, width=NODE_SIZE.x, height=NODE_SIZE.y)
-
-                # responses output
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Output):
-                    with dpg.group(horizontal=True):
-                        dpg.add_spacer(width=NODE_SIZE.x)
-                        dpg.add_text('Responses')
-
-            with dpg.node(label='Attribute Comparison Node'):
-                # inputs
-                with dpg.node_attribute():
-                    pass
-
-                # attribute comparison node attributes
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Static):
-                    with dpg.group(horizontal=True):
-                        dpg.add_input_text(width=100)
-                        dpg.add_combo(items=ComparisonOperators, default_value=ComparisonOperators[0], width=40)
-                        dpg.add_input_int(width=100)
-
-                # true response
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Output):
-                    with dpg.group(horizontal=True):
-                        dpg.add_spacer(width=221)
-                        dpg.add_text('True')
-
-                # false response
-                with dpg.node_attribute(attribute_type=dpg.mvNode_Attr_Output):
-                    with dpg.group(horizontal=True):
-                        dpg.add_spacer(width=214)
-                        dpg.add_text('False')
+            add_talk_node(Position(0, 0))
+            add_attribute_comparison_node(Position(500, 120))
 
     dpg.setup_dearpygui()
     dpg.show_viewport()
@@ -90,6 +55,49 @@ def main() -> None:
     dpg.start_dearpygui()
     dpg.destroy_context()
 
+def add_talk_node(pos: Position = Position(0, 0)) -> None:
+    node_id: int = dpg.add_node(parent=NODE_EDITOR_TAG, label='Talk Node', pos=pos)
 
+    # inputs
+    dpg.add_node_attribute(parent=node_id)
+
+    # node attributes
+    attr_id: int = dpg.add_node_attribute(parent=node_id, attribute_type=dpg.mvNode_Attr_Static)
+    dpg.add_input_text(label='Speaker', parent=attr_id, width=NODE_SIZE.x)
+    dpg.add_input_text(label='Text', parent=attr_id, multiline=True, width=NODE_SIZE.x, height=NODE_SIZE.y)
+
+    # responses
+    attr_id = dpg.add_node_attribute(parent=node_id, attribute_type=dpg.mvNode_Attr_Output)
+    group_id: int = dpg.add_group(parent=attr_id, horizontal=True)
+    dpg.add_spacer(parent=group_id, width=NODE_SIZE.x)
+    dpg.add_text('Responses', parent=group_id)
+
+def add_attribute_comparison_node(pos: Position = Position(0, 0)) -> None:
+    node_id: int = dpg.add_node(parent=NODE_EDITOR_TAG, label='Attribute Comparison Node', pos=pos)
+
+    # inputs
+    dpg.add_node_attribute(parent=node_id)
+
+    # node attributes
+    attr_id: int = dpg.add_node_attribute(parent=node_id, attribute_type=dpg.mvNode_Attr_Static)
+    group_id: int = dpg.add_group(parent=attr_id, horizontal=True)
+    dpg.add_input_text(parent=group_id, width=100)
+    dpg.add_combo(parent=group_id, items=ComparisonOperators, default_value=ComparisonOperators[0], width=40)
+    dpg.add_input_int(parent=group_id, width=100)
+
+    # true response
+    attr_id = dpg.add_node_attribute(parent=node_id, attribute_type=dpg.mvNode_Attr_Output)
+    group_id = dpg.add_group(parent=attr_id, horizontal=True)
+    dpg.add_spacer(parent=group_id, width=221)
+    dpg.add_text('True', parent=group_id)
+
+    # false response
+    attr_id = dpg.add_node_attribute(parent=node_id, attribute_type=dpg.mvNode_Attr_Output)
+    group_id = dpg.add_group(parent=attr_id, horizontal=True)
+    dpg.add_spacer(parent=group_id, width=214)
+    dpg.add_text('False', parent=group_id)
+
+
+# app entry
 if __name__ == '__main__':
     main()
