@@ -7,7 +7,7 @@ class AttributeComparisonNode:
 
     Attribute Comparison Nodes facilitate holding data for comparison in other
     software. It assumes the consumer of this data will parse the `operator`,
-    `attribute` name and `value` to determine which branch to take. 
+    `attribute` name and `value` to determine which branch to take.
 
     The operation should be executed with the `attribute` as the left-hand
     operand and `value` is the right-hand operand.
@@ -17,7 +17,7 @@ class AttributeComparisonNode:
         attribute (str): Name of the attribute to compare the value against.
         value (int):     The value to compare the attribute against.
     """
-    
+
     operator: str = '=='
     attribute: str = 'AttributeName'
     value: int = 0
