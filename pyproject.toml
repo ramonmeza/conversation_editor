@@ -16,3 +16,9 @@ jsonschema = "^4.16.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[pytest]
+pythonpath = [
+    "conversation_editor",
+    "tests"
+]

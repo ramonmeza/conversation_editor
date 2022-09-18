@@ -1,0 +1,48 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://raw.githubusercontent.com/ramonmeza/conversation_editor/main/data/schemas/attribute_comparison_node_schema.json",
+    "type": "object",
+    "default": {},
+    "title": "Contains information used to make an attribute check.",
+    "required": [
+        "operator",
+        "attribute",
+        "value"
+    ],
+    "properties": {
+        "operator": {
+            "type": "string",
+            "default": "",
+            "title": "Comparison operator to be used.",
+            "examples": [
+                "==",
+                "!=",
+                "<",
+                "<=",
+                ">",
+                ">="
+            ]
+        },
+        "attribute": {
+            "type": "string",
+            "default": "",
+            "title": "Name of the attribute to compare the value against.",
+            "examples": [
+                "Health"
+            ]
+        },
+        "value": {
+            "type": "integer",
+            "default": "",
+            "title": "The value to compare the attribute against.",
+            "examples": [
+                0
+            ]
+        }
+    },
+    "examples": [{
+        "operator": "<",
+        "attribute": "Health",
+        "value": 100
+    }]
+}

@@ -8,9 +8,15 @@
         "**/Thumbs.db": true,
         "**/__pycache__": true,
     },
+    "python.autoComplete.extraPaths": [
+        "tests"
+    ],
     "python.testing.pytestArgs": [
         "tests"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "python.analysis.extraPaths": [
+        "tests"
+    ]
 }
