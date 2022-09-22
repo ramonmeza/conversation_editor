@@ -1,28 +1,27 @@
 import dearpygui.dearpygui as dpg
 
-from collections import namedtuple
-
+from callbacks import shortcut_callback
+from constants import NODE_EDITOR_TAG, NODE_SIZE, PRIMARY_WINDOW_TAG
 from core.attribute_comparison_node import ComparisonOperators
-
-
-# types
-NodeSize: namedtuple = namedtuple('NodeSize', ['x', 'y'])
-Position: namedtuple = NodeSize
-
-# constants
-PRIMARY_WINDOW_TAG: str = 'Primary Window'
-NODE_EDITOR_TAG: str = 'Node Editor'
-
-NODE_SIZE: NodeSize = NodeSize(275, 250)
+from custom_types import Position
 
 
 # methods
 def main() -> None:
     dpg.create_context()
+    dpg.configure_app(manual_callback_management=True)
 
     dpg.create_viewport(title='Custom Title', width=800, height=600)
 
     with dpg.window(tag=PRIMARY_WINDOW_TAG):
+        with dpg.handler_registry():
+            dpg.add_key_release_handler(dpg.mvKey_N, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+            dpg.add_key_release_handler(dpg.mvKey_O, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+            dpg.add_key_release_handler(dpg.mvKey_S, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+            dpg.add_key_release_handler(dpg.mvKey_W, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+            dpg.add_key_release_handler(dpg.mvKey_Z, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+            dpg.add_key_release_handler(dpg.mvKey_Y, user_data=dpg.mvKey_Control, callback=shortcut_callback)
+
         with dpg.menu_bar():
             with dpg.menu(label='File'):
                 dpg.add_menu_item(label='New', shortcut='Ctrl+N')
@@ -30,9 +29,8 @@ def main() -> None:
                 dpg.add_menu_item(label='Open', shortcut='Ctrl+O')
                 dpg.add_separator()
                 dpg.add_menu_item(label='Save', shortcut='Ctrl+S')
-                dpg.add_menu_item(label='Save As', shortcut='Ctrl+Shift+S')
                 dpg.add_separator()
-                dpg.add_menu_item(label='Exit')
+                dpg.add_menu_item(label='Exit', shortcut='Ctrl+W')
             with dpg.menu(label='Edit'):
                 dpg.add_menu_item(label='Undo', shortcut='Ctrl+Z')
                 dpg.add_menu_item(label='Redo', shortcut='Ctrl+Y')
@@ -52,7 +50,12 @@ def main() -> None:
     dpg.show_viewport()
     dpg.maximize_viewport()
     dpg.set_primary_window(PRIMARY_WINDOW_TAG, True)
-    dpg.start_dearpygui()
+
+    while dpg.is_dearpygui_running():
+        jobs = dpg.get_callback_queue()
+        dpg.run_callbacks(jobs)
+        dpg.render_dearpygui_frame()
+
     dpg.destroy_context()
 
 def add_talk_node(pos: Position = Position(0, 0)) -> None:
