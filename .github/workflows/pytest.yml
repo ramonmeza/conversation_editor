@@ -8,33 +8,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v4
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+
+      - name: Setup a local virtual environment
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment based on the dependencies lock file
         with:
-          python-version: 3.10.5
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
 
-      - name: Cache Poetry
-        uses: actions/cache@v2
-        with:
-          path: ~/.local
-          key: poetry-1.2.0-0
-
-      - uses: snok/install-poetry@v1
-        with:
-          version: 1.2.0
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Cache Dependencies
-        id: cache-dependencies
-        uses: actions/cache@v2
-        with:
-          path: .env
-          key: pydeps-${{ hashFiles('**/poetry.lock') }}
-
-      - run: poetry install --no-interaction --no-root
-        if: steps.cache-dependencies.output.cache-hit != 'true'
-
-      - run: poetry install --no-interaction
-
-      - run: poetry run pytest
+      - name: Install the project dependencies
+        run: poetry install
+      - name: Run the automated tests (for example)
+        run: poetry run pytest -v
